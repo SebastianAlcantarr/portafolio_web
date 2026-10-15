@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokens de color: los mismos nombres en ambos modos, solo cambian los valores. */
+@layer base {
+  :root {
+    --paper: 250 250 248; /* #FAFAF8 */
+    --ink: 10 10 10; /* #0A0A0A */
+    --muted: 82 82 77; /* #52524D */
+    --rule: 214 214 207; /* #D6D6CF */
+    --signal: 206 36 28; /* #CE241C */
+    --plate: 233 233 227; /* #E9E9E3 */
+    color-scheme: light;
+  }
+
+  .dark {
+    --paper: 12 12 11; /* #0C0C0B */
+    --ink: 242 241 236; /* #F2F1EC */
+    --muted: 168 167 160; /* #A8A7A0 */
+    --rule: 46 46 42; /* #2E2E2A */
+    --signal: 255 86 71; /* #FF5647 */
+    --plate: 28 28 26; /* #1C1C1A */
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-paper text-ink antialiased;
+    scroll-padding-top: 1.5rem;
+    scrollbar-color: rgb(var(--ink) / 0.35) rgb(var(--paper));
+    accent-color: rgb(var(--signal));
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-paper font-sans text-body text-ink;
+    caret-color: rgb(var(--signal));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background: rgb(var(--signal));
+    color: rgb(var(--paper));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 4px;
+  }
+
+  a {
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  /* Retícula de 12 columnas que comparten todas las secciones. */
+  .grid-page {
+    @apply mx-auto grid w-full max-w-[1600px] grid-cols-4 gap-x-4 px-4 sm:grid-cols-8 sm:gap-x-6 sm:px-6 lg:grid-cols-12 lg:px-12;
+  }
+
+  .link-arrow {
+    @apply inline-flex items-center gap-2 underline decoration-rule decoration-1 underline-offset-[0.22em] transition-colors duration-300 hover:text-signal hover:decoration-signal;
+  }
+}
+
+/* Movimiento: solo si el usuario no pidió reducirlo. Todo es visible por defecto. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .enter-plate {
+    animation: plate-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+
+  .enter-line {
+    animation: line-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .enter-fade {
+    animation: fade-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes plate-in {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  @keyframes line-in {
+    from {
+      transform: translateY(105%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
