@@ -12,6 +12,8 @@ useSeoMeta({
 <template>
   <div id="inicio" class="overflow-x-clip">
     <SiteHeader />
-    <main />
+    <main>
+      <HeroSection />
+    </main>
   </div>
 </template>
