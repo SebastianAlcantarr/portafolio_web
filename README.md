@@ -25,4 +25,4 @@ Lo que está entre `[CORCHETES]` es un placeholder. El sitio lo muestra con un r
 
 ## Animaciones
 
-Scroll suave, hero fijado, proyectos apilados, tinta WebGL y vidrio líquido. Los valores se ajustan en `data/motion.ts`. Cómo funciona cada efecto, cómo cambiarlo y cómo apagarlo: [ANIMACIONES.md](ANIMACIONES.md).
+Scroll suave, hero fijado, índice de proyectos con captura que sigue al cursor y barra flotante de vidrio. Los valores se ajustan en `data/motion.ts`. Cómo funciona cada efecto, cómo cambiarlo y cómo apagarlo: [ANIMACIONES.md](ANIMACIONES.md).
