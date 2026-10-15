@@ -13,7 +13,7 @@ const pending = computed(() => isPlaceholder(props.href))
 <template>
   <span
     v-if="pending"
-    class="inline-flex items-center gap-2 text-muted"
+    class="inline-flex items-center gap-2 opacity-70"
     :title="`Placeholder pendiente: ${href ?? ''}`"
   >
     <slot />

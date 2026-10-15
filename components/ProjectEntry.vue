@@ -16,7 +16,7 @@ const plateHref = computed(() => (isPlaceholder(props.project.live) ? undefined 
       <component
         :is="plateHref ? 'a' : 'div'"
         v-if="project.image"
-        v-bind="plateHref ? { href: plateHref, target: '_blank', rel: 'noopener noreferrer', tabindex: -1, 'aria-hidden': 'true' } : {}"
+        v-bind="plateHref ? { href: plateHref, target: '_blank', rel: 'noopener noreferrer', tabindex: -1 } : {}"
         class="group col-span-4 block overflow-hidden bg-plate sm:col-span-8 lg:col-span-8"
       >
         <img
