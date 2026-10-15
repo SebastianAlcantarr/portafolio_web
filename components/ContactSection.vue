@@ -1,5 +1,24 @@
 <script setup lang="ts">
+import gsap from 'gsap'
 import { isPlaceholder, profile } from '~/data/profile'
+
+const section = ref<HTMLElement | null>(null)
+const inner = ref<HTMLElement | null>(null)
+
+// El contenido sube más lento que el fondo negro mientras la sección entra: parece que estaba detrás.
+useMotion(section, (mm, el) => {
+  const heading = el.querySelector<HTMLElement>('#contacto-title')
+  mm.add('all', () => {
+    if (heading) revealChars(heading, { start: 'top 95%' })
+  })
+  mm.add(DESKTOP, () => {
+    gsap.fromTo(
+      inner.value,
+      { yPercent: -30 },
+      { yPercent: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom bottom', scrub: true } },
+    )
+  })
+})
 
 const mailto = isPlaceholder(profile.email) ? profile.email : `mailto:${profile.email}`
 const year = new Date().getFullYear()
@@ -11,8 +30,13 @@ const networks = [
 </script>
 
 <template>
-  <section id="contacto" aria-labelledby="contacto-title" class="bg-ink text-paper selection:bg-paper selection:text-ink">
-    <div class="grid-page gap-y-10 pb-10 pt-16 lg:gap-y-16 lg:pt-24">
+  <section
+    id="contacto"
+    ref="section"
+    aria-labelledby="contacto-title"
+    class="overflow-clip bg-ink text-paper selection:bg-paper selection:text-ink"
+  >
+    <div ref="inner" class="grid-page gap-y-10 pb-10 pt-16 lg:gap-y-16 lg:pt-24">
       <h2 id="contacto-title" class="col-span-full font-display text-section font-black">Contacto</h2>
 
       <p class="col-span-4 max-w-[26ch] text-lead sm:col-span-6 lg:col-span-5">
