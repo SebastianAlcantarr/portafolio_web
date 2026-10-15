@@ -22,3 +22,7 @@ Lo que está entre `[CORCHETES]` es un placeholder. El sitio lo muestra con un r
 - Los tokens de color están en `assets/css/main.css` (`:root` para el modo claro, `.dark` para el oscuro).
 - La escala tipográfica está en `tailwind.config.ts` (`meta`, `body`, `lead`, `title`, `section`, `poster`).
 - Fuentes: Schibsted Grotesk (títulos) y Hanken Grotesk (texto), servidas desde el propio sitio con `@nuxt/fonts`.
+
+## Animaciones
+
+Scroll suave, hero fijado, proyectos apilados, tinta WebGL y vidrio líquido. Los valores se ajustan en `data/motion.ts`. Cómo funciona cada efecto, cómo cambiarlo y cómo apagarlo: [ANIMACIONES.md](ANIMACIONES.md).

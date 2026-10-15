@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Nuxt 3 + Tailwind CSS, pinned by the user. Allowed additions: official Nuxt modules only (e.g. @nuxtjs/color-mode, @nuxtjs/tailwindcss, @nuxt/fonts). Any other dependency requires asking first. No AI and no external API calls at runtime.
+Nuxt 3 + Tailwind CSS, pinned by the user. Allowed additions: official Nuxt modules (e.g. @nuxtjs/color-mode, @nuxtjs/tailwindcss, @nuxt/fonts) plus GSAP (ScrollTrigger, SplitText) and Lenis for motion, both approved by the user. Any other dependency requires asking first. No AI and no external API calls at runtime.
 
 ## Users
 

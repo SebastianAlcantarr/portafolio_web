@@ -23,6 +23,6 @@ STORY: The visitor reads the name and role at poster scale, sees a real shipped 
 FIRST VIEWPORT: Top grid nav: name cols 1–3, section links stacked cols 6–8, email + theme toggle cols 11–12. Intro sentence large in cols 1–5. RayForce plate cols 6–12 from just below the nav to about 70% height. The name set ~200px bottom-left, crossing the plate in difference blend. Role line under it bottom-left; "Ver proyectos" (red underline) and "Contacto" bottom-right.
 
 FORM: Swiss International Typographic Style poster (impeccable's pick, rank 1 on the ordered list). seed: none (unavailable)
-Signature interaction: the hero assembles once on load (plate unmasks with clip-path, name slides up line by line); project plates track hover with a slow scale. Reduced motion: everything static and visible.
+Signature interaction: the hero assembles once on load (plate unmasks with clip-path, name slides up line by line), then a WebGL ink follows the cursor and reveals the name in signal red. On scroll (desktop) the hero pins and the cover plate grows to full viewport; projects stack as full-screen sticky sheets with a liquid-glass ficha; a stack marquee reacts to scroll velocity; section titles enter letter by letter. Lenis smooth scroll, floating glass nav. Knobs in data/motion.ts, guide in ANIMACIONES.md. Reduced motion: everything static and visible.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
