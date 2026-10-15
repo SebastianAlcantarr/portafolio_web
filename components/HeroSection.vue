@@ -17,7 +17,7 @@ const nameLines = profile.name.split(' ')
 
     <figure
       v-if="cover?.image"
-      class="col-span-4 mt-10 sm:col-span-8 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:mt-0"
+      class="col-span-4 mt-10 flex flex-col-reverse gap-3 sm:col-span-8 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:mt-0"
     >
       <a
         :href="`#proyecto-${cover.slug}`"
@@ -33,14 +33,14 @@ const nameLines = profile.name.split(' ')
           class="aspect-[16/10] w-full object-cover object-top transition-transform duration-[1.4s] ease-out-expo group-hover:scale-[1.03]"
         />
       </a>
-      <figcaption class="mt-3 flex flex-wrap justify-between gap-x-4 text-meta text-muted">
+      <figcaption class="flex flex-wrap justify-between gap-x-4 text-meta text-muted">
         <span>En portada: {{ cover.title }}, {{ cover.summary.toLowerCase() }}</span>
       </figcaption>
     </figure>
 
     <nav
       aria-label="Proyectos"
-      class="enter-fade col-span-4 hidden self-end border-t border-rule pt-3 text-meta lg:col-span-4 lg:block"
+      class="enter-fade col-span-4 mt-12 hidden self-start border-t border-rule pt-3 text-meta lg:col-span-4 lg:block"
       style="animation-delay: 0.35s"
     >
       <ul>
