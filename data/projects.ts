@@ -25,22 +25,9 @@ export const projects: Project[] = [
     kind: 'Cliente real',
     stack: ['[STACK_RAYFORCE]'],
     live: 'https://rayforce.com.mx',
-    repo: '[URL_GITHUB_RAYFORCE]',
     image: {
       src: '/projects/rayforce.webp',
       alt: 'Página de inicio de la tienda en línea RayForce',
-    },
-  },
-  {
-    slug: 'invitacion-de-boda',
-    title: 'Invitación de boda',
-    summary: 'Invitación web con confirmación de asistencia',
-    stack: ['Nuxt 3'],
-    live: 'https://bodagabrielyrenee.com',
-    repo: '[URL_GITHUB_BODA]',
-    image: {
-      src: '/projects/boda.webp',
-      alt: 'Invitación de boda en línea con fotografía de la pareja y botón para confirmar asistencia',
     },
   },
   {
@@ -52,21 +39,22 @@ export const projects: Project[] = [
     stack: ['Power BI'],
   },
   {
-    slug: 'geoinvest',
-    title: 'GeoInvest',
-    summary: 'MVP con IA',
-    kind: 'Hackatón',
-    stack: ['FastAPI', 'Vue'],
-    live: '[ENLACE_GEOINVEST]',
-    repo: '[URL_GITHUB_GEOINVEST]',
-  },
-  {
     slug: 'portal-de-derivadas',
     title: 'Portal de derivadas',
     summary: 'Portal académico sobre derivadas',
     kind: 'Académico',
     stack: ['Vue', 'Tailwind CSS', 'FastAPI'],
-    live: '[ENLACE_DERIVADAS]',
-    repo: '[URL_GITHUB_DERIVADAS]',
+    live: 'https://sebastianalcantarr.github.io/PROYECTO_INGENIERIA_SOFTWARE_II',
   },
+  {
+    slug: 'invitacion-de-boda',
+    title: 'Invitación de boda',
+    summary: 'Invitación web con confirmación de asistencia',
+    stack: ['Nuxt 3'],
+    live: 'https://bodagabrielyrenee.com',
+    image: {
+      src: '/projects/boda.webp',
+      alt: 'Invitación de boda en línea con fotografía de la pareja y botón para confirmar asistencia',
+    },
+  }
 ]

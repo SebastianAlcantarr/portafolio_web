@@ -106,7 +106,7 @@ useMotion(section, (mm, el) => {
           />
         </a>
         <figcaption data-hero-fade class="flex flex-wrap justify-between gap-x-4 text-meta text-muted">
-          <span>En portada: {{ cover.title }}, {{ cover.summary.toLowerCase() }}</span>
+          <span>En portada: {{ cover.title }}</span>
         </figcaption>
       </figure>
 
@@ -141,7 +141,6 @@ useMotion(section, (mm, el) => {
         class="enter-fade relative z-10 col-span-full mt-6 flex flex-col gap-6 lg:mt-8 lg:flex-row lg:items-end lg:justify-between"
         style="animation-delay: 0.5s"
       >
-        <p class="font-display text-lead font-bold tracking-tight">{{ profile.role }}</p>
 
         <div class="flex flex-col gap-3 sm:flex-row">
           <a

@@ -58,8 +58,10 @@ onMounted(() => {
     <div ref="track" class="flex w-max will-change-transform" aria-hidden="true">
       <div v-for="n in copies" :key="n" class="flex shrink-0 items-center">
         <template v-for="tech in profile.stack" :key="tech">
-          <span class="px-5 font-display text-title font-black lg:px-8">{{ tech }}</span>
-          <span class="h-[0.5em] w-[0.5em] shrink-0 bg-signal text-title" />
+          <span class="inline-flex items-center gap-3 px-5 font-display text-title font-black lg:gap-4 lg:px-8">
+            {{ tech }}
+            <TechIcon :name="tech" />
+          </span>
         </template>
       </div>
     </div>

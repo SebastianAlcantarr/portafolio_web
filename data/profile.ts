@@ -1,25 +1,25 @@
 // Datos personales. Todo lo que está entre [CORCHETES] es un placeholder por reemplazar.
 
 export const profile = {
-  name: '[TU_NOMBRE]',
+  name: '[ Sebastián Alcantar Vicencio]',
   role: 'Desarrollador web · Vue, Nuxt, FastAPI',
   intro:
-    'Construyo sitios y aplicaciones de principio a fin: interfaces con Vue y Nuxt, APIs con FastAPI.',
+    'Construyo sitios y aplicaciones en su mayoria con  Vue y Nuxt y APIs con FastAPI.',
 
-  email: '[TU_CORREO]',
-  github: '[URL_GITHUB]',
+  email: 'sebastianalcantar323@gmail.com',
+  github: 'https://github.com/SebastianAlcantarr',
   linkedin: '[URL_LINKEDIN]',
 
   about:
-    'Soy desarrollador web. He hecho una tienda en línea headless para un cliente real, una invitación de boda con confirmación de asistencia, proyectos académicos y de hackatón, y gané el primer lugar del Datatón Sonora 2026.',
+    'Soy un estudiante de la Licenciatura en Ciencas de la Computacion en la Universidad de Sonora, me apasiona el desarollo web , la Ingenieria de Software ya la Ciencia de Datos   ',
 
   education: {
-    degree: 'Licenciatura en Ciencias de la Computación',
+    degree: 'Licenciatura en Ciencias de la Computación 7mo Semestre',
     school: 'Universidad de Sonora (UNISON)',
   },
 
   // Agrega aquí las tecnologías que quieras mostrar.
-  stack: ['Vue', 'Nuxt', 'Tailwind CSS', 'FastAPI', 'Power BI'],
+  stack: ['Vue','Tailwind CSS', 'FastAPI', 'Power BI','Python','SQL'],
 }
 
 /** Un valor que todavía es un placeholder, como "[TU_CORREO]". */

@@ -37,12 +37,7 @@ const networks = [
     class="overflow-clip bg-ink text-paper selection:bg-paper selection:text-ink"
   >
     <div ref="inner" class="grid-page gap-y-10 pb-10 pt-16 lg:gap-y-16 lg:pt-24">
-      <h2 id="contacto-title" class="col-span-full font-display text-section font-black">Contacto</h2>
-
-      <p class="col-span-4 max-w-[26ch] text-lead sm:col-span-6 lg:col-span-5">
-        ¿Tienes un puesto o un proyecto en mente? Escríbeme.
-      </p>
-
+      <h2 id="contacto-title" class="col-span-full font-display text-section font-black">Contactos</h2>
       <div class="col-span-full">
         <AppLink
           :href="mailto"
