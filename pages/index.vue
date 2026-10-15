@@ -14,9 +14,12 @@ useSeoMeta({
     <SiteHeader />
     <main>
       <HeroSection />
+      <VelocityMarquee />
       <ProjectsSection />
       <AboutSection />
       <ContactSection />
     </main>
+    <!-- Al final a propósito: sus disparadores se crean después del hero fijado y miden bien. -->
+    <GlassNav />
   </div>
 </template>

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// `compact` muestra solo el icono (se usa en la barra flotante).
+defineProps<{ compact?: boolean }>()
+
 const colorMode = useColorMode()
 
 const isDark = computed(() => colorMode.value === 'dark')
@@ -25,10 +28,10 @@ function toggle() {
         <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5" />
         <path d="M8 1a7 7 0 0 1 0 14Z" fill="currentColor" />
       </svg>
-      <span>{{ isDark ? 'Modo claro' : 'Modo oscuro' }}</span>
+      <span v-if="!compact">{{ isDark ? 'Modo claro' : 'Modo oscuro' }}</span>
     </button>
     <template #fallback>
-      <span class="inline-flex h-5 w-28" aria-hidden="true" />
+      <span class="inline-flex h-5" :class="compact ? 'w-10' : 'w-28'" aria-hidden="true" />
     </template>
   </ClientOnly>
 </template>
