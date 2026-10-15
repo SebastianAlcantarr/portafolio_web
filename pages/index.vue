@@ -16,6 +16,7 @@ useSeoMeta({
       <HeroSection />
       <ProjectsSection />
       <AboutSection />
+      <ContactSection />
     </main>
   </div>
 </template>
