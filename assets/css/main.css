@@ -70,6 +70,28 @@
     @apply mx-auto grid w-full max-w-[1600px] grid-cols-4 gap-x-4 px-4 sm:grid-cols-8 sm:gap-x-6 sm:px-6 lg:grid-cols-12 lg:px-12;
   }
 
+  /* Vidrio líquido. La refracción (--glass-filter) la genera useLiquidGlass en Chromium;
+     en Safari y Firefox queda el desenfoque. El brillo del borde son dos líneas de luz interiores. */
+  .glass {
+    background: rgb(var(--paper) / 0.72);
+    backdrop-filter: var(--glass-filter, blur(14px) saturate(1.6));
+    -webkit-backdrop-filter: var(--glass-filter, blur(14px) saturate(1.6));
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.55),
+      inset 0 -1px 0 0 rgb(255 255 255 / 0.12),
+      inset 0 0 0 1px rgb(var(--ink) / 0.08),
+      0 12px 32px -12px rgb(0 0 0 / 0.25);
+  }
+
+  .dark .glass {
+    background: rgb(var(--paper) / 0.84);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.18),
+      inset 0 -1px 0 0 rgb(255 255 255 / 0.05),
+      inset 0 0 0 1px rgb(255 255 255 / 0.08),
+      0 12px 32px -12px rgb(0 0 0 / 0.6);
+  }
+
   .link-arrow {
     @apply inline-flex items-center gap-2 underline decoration-rule decoration-1 underline-offset-[0.22em] transition-colors duration-300 hover:text-signal hover:decoration-signal;
   }
@@ -81,16 +103,27 @@
     scroll-behavior: smooth;
   }
 
+  /* Con Lenis activo, el scroll suave lo hace Lenis, no el navegador. */
+  html.lenis-on,
+  html.lenis-on body {
+    scroll-behavior: auto;
+    height: auto;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+
   .enter-plate {
-    animation: plate-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    animation: plate-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
   }
 
   .enter-line {
-    animation: line-in 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: line-in 1s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
   .enter-fade {
-    animation: fade-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: fade-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
   @keyframes plate-in {
