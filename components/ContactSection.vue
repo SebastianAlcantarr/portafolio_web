@@ -41,7 +41,7 @@ const networks = [
       <div class="col-span-full">
         <AppLink
           :href="mailto"
-          class="inline-block max-w-full font-display text-[clamp(1.75rem,0.9rem+4.4vw,5.75rem)] font-black leading-none tracking-[-0.035em] underline decoration-2 underline-offset-[0.12em] [overflow-wrap:anywhere] hover:decoration-[0.08em]"
+          class="inline-block max-w-full font-display text-[clamp(1.625rem,0.9rem+3.8vw,4.5rem)] font-black leading-none tracking-[-0.035em] underline decoration-2 underline-offset-[0.12em] [overflow-wrap:anywhere] hover:decoration-[0.08em]"
         >
           <template v-if="!isPlaceholder(profile.email)">{{ profile.email }}</template>
           <template v-else>Correo</template>

@@ -31,7 +31,7 @@ const liveHref = computed(() => (isPlaceholder(props.project.live) ? undefined :
 
       <h3
         :id="`titulo-${project.slug}`"
-        class="col-span-full font-display text-[clamp(2.25rem,1rem+4.5vw,6rem)] font-black leading-[0.9] tracking-[-0.04em] lg:col-span-6"
+        class="col-span-full font-display text-[clamp(2rem,1rem+3.8vw,4.75rem)] font-black leading-[0.9] tracking-[-0.04em] lg:col-span-6"
       >
         <component
           :is="liveHref ? 'a' : 'span'"
