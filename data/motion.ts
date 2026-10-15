@@ -12,37 +12,22 @@ export const motion = {
     wheelMultiplier: 1,
   },
 
-  /** Tinta WebGL que sigue al cursor en el hero y revela el nombre en negativo. */
-  ink: {
-    enabled: true,
-    /** Grosor del trazo en px de pantalla (se suma al que da la velocidad del cursor). */
-    radius: 46,
-    /** Cuánto engorda el trazo con la velocidad del cursor. */
-    speedRadius: 0.35,
-    /** Qué tan rápido se seca la tinta (0.9 = desaparece rápido, 0.99 = dura mucho). */
-    dissipation: 0.965,
-    /** Fuerza del remolino que deforma la tinta. */
-    swirl: 0.0016,
-    /** Resolución de la simulación respecto a la pantalla (0.5 = la mitad). Más bajo = más ligero. */
-    resolution: 0.4,
-    /** Trazo automático al cargar la página (lo que ven también los celulares). */
-    introStroke: true,
-  },
-
-  /** Hero fijado: la captura de portada crece hasta llenar la pantalla al bajar. */
+  /** Hero fijado: la captura de portada crece al bajar, con el nombre y el rol encima. */
   hero: {
     /** Cuánto scroll (en alturas de pantalla) dura la expansión. */
-    pinLength: 1.1,
+    pinLength: 0.9,
+    /** Hasta qué fracción del ancho de la pantalla crece la captura (1 = toda la pantalla). */
+    growTo: 0.8,
   },
 
-  /** Proyectos apilados: cada proyecto se queda fijo y el siguiente lo cubre. */
-  stack: {
-    /** Escala a la que se encoge el proyecto que queda debajo. */
-    shrinkTo: 0.9,
-    /** Qué tanto se oscurece el proyecto de abajo (0 a 1). */
-    dimTo: 0.55,
-    /** Desplazamiento parallax de la captura dentro de su marco, en %. */
-    parallax: 12,
+  /** Tarjeta con la captura que sigue al cursor en la lista de proyectos (solo escritorio con mouse). */
+  preview: {
+    /** Retraso con el que sigue al cursor, en segundos. Más alto = más "flota". */
+    lag: 0.55,
+    /** Inclinación máxima según la velocidad del cursor, en grados. */
+    tilt: 6,
+    /** Cuánto se desplaza en horizontal con el cursor, en px (la tarjeta vive en su propio carril). */
+    drift: 32,
   },
 
   /** Cinta de texto que se mueve con la velocidad del scroll. */

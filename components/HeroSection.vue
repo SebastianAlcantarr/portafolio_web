@@ -11,11 +11,13 @@ const nameLines = profile.name.split(' ')
 const section = ref<HTMLElement | null>(null)
 const title = ref<HTMLElement | null>(null)
 
-// Escritorio: el hero se fija y la captura de portada crece hasta cubrir toda la pantalla,
-// mientras el resto se desvanece y el nombre (en modo diferencia) queda encima.
+// Escritorio: el hero se fija y la captura de portada crece y se centra,
+// mientras la intro y el índice se desvanecen; el nombre (en modo diferencia) y el rol quedan encima.
 useMotion(section, (mm, el) => {
   const plate = el.querySelector<HTMLElement>('[data-plate]')
   const fades = el.querySelectorAll<HTMLElement>('[data-hero-fade]')
+  const foot = el.querySelector<HTMLElement>('[data-hero-foot]')
+  const margin = 24
   if (!plate) return
 
   mm.add(DESKTOP, () => {
@@ -31,12 +33,16 @@ useMotion(section, (mm, el) => {
       const vh = window.innerHeight
       const w = plate.offsetWidth
       const h = plate.offsetHeight
-      const s = Math.max(vw / w, vh / h)
       const sectionTopOnScreen = docTop() - pinStart()
+      // Espacio libre: de arriba de la pantalla hasta la fila del rol y los botones, que siguen visibles.
+      const footTop = foot ? sectionTopOnScreen + foot.offsetTop : vh
+      const room = footTop - 2 * margin
+      // Crece hasta `growTo` del ancho sin invadir esa fila, y queda centrada en el espacio libre.
+      const s = Math.min((vw * motion.hero.growTo) / w, room / h)
       return {
         s,
         x: (vw - w * s) / 2 - plate.offsetLeft,
-        y: (vh - h * s) / 2 - sectionTopOnScreen - plate.offsetTop,
+        y: margin + (room - h * s) / 2 - sectionTopOnScreen - plate.offsetTop,
       }
     }
 
@@ -126,13 +132,13 @@ useMotion(section, (mm, el) => {
         class="relative z-10 col-span-full -mt-[0.38em] font-display text-poster font-black text-white mix-blend-difference lg:-mt-[0.5em]"
       >
         <span v-for="(line, i) in nameLines" :key="i" class="block overflow-hidden pb-[0.04em]">
-          <span data-ink-line class="enter-line block" :style="{ animationDelay: `${0.25 + i * 0.1}s` }">{{ line }}</span>
+          <span class="enter-line block" :style="{ animationDelay: `${0.25 + i * 0.1}s` }">{{ line }}</span>
         </span>
       </h1>
 
       <div
-        data-hero-fade
-        class="enter-fade col-span-full mt-6 flex flex-col gap-6 lg:mt-8 lg:flex-row lg:items-end lg:justify-between"
+        data-hero-foot
+        class="enter-fade relative z-10 col-span-full mt-6 flex flex-col gap-6 lg:mt-8 lg:flex-row lg:items-end lg:justify-between"
         style="animation-delay: 0.5s"
       >
         <p class="font-display text-lead font-bold tracking-tight">{{ profile.role }}</p>
@@ -155,8 +161,5 @@ useMotion(section, (mm, el) => {
         </div>
       </div>
     </div>
-
-    <!-- Tinta WebGL: encima de todo el hero, no recibe clics -->
-    <InkCanvas :text-root="title" class="absolute inset-0 z-20 h-full w-full" />
   </section>
 </template>
