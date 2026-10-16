@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import gsap from 'gsap'
-import { profile } from '~/data/profile'
+import { isPlaceholder, profile } from '~/data/profile'
 import { projects } from '~/data/projects'
 
 // El proyecto de portada es el primero que tenga imagen.
 const cover = projects.find((p) => p.images?.length)
 const coverImage = cover?.images?.[0]
 const nameLines = profile.name.split(' ')
+const mailto = isPlaceholder(profile.email) ? profile.email : `mailto:${profile.email}`
 
 const section = ref<HTMLElement | null>(null)
 
@@ -36,11 +37,28 @@ useMotion(section, (mm, el) => {
 <template>
   <section ref="section" aria-labelledby="hero-title" class="relative bg-paper">
     <div class="grid-page pb-20 lg:pb-16">
-      <p
-        class="enter-fade col-span-4 text-lead font-medium sm:col-span-6 lg:col-span-5"
-      >
-        <span v-for="line in profile.headline" :key="line" class="block">{{ line }}</span>
-      </p>
+      <div class="enter-fade col-span-4 sm:col-span-6 lg:col-span-5">
+        <p class="text-lead font-medium">
+          <span v-for="line in profile.headline" :key="line" class="block">{{ line }}</span>
+        </p>
+
+        <!-- Enlaces clave, visibles sin hacer scroll. -->
+        <ul aria-label="Enlaces" class="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-display text-base font-bold">
+          <li>
+            <AppLink :href="profile.github" external class="link-arrow">
+              GitHub <ArrowIcon direction="up-right" />
+            </AppLink>
+          </li>
+          <li>
+            <a :href="profile.cv" download="CV-Sebastian-Alcantar.pdf" type="application/pdf" class="link-arrow">
+              Descargar CV <ArrowIcon direction="down" />
+            </a>
+          </li>
+          <li>
+            <AppLink :href="mailto" class="link-arrow [overflow-wrap:anywhere]">{{ profile.email }}</AppLink>
+          </li>
+        </ul>
+      </div>
 
       <figure
         v-if="cover && coverImage"

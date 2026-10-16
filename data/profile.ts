@@ -14,6 +14,8 @@ export const profile = {
 
   email: 'sebastianalcantar323@gmail.com',
   github: 'https://github.com/SebastianAlcantarr',
+  /** CV descargable: el archivo va en public/cv.pdf. */
+  cv: '/cv.pdf',
   linkedin: 'https://www.linkedin.com/messaging/thread/2-ZDc0MDdlODAtYWRkYy00YmM0LWIxMzItOGVkMTdmYTkzMTQwXzEwMA==/',
 
   about:

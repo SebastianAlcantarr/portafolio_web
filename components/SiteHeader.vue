@@ -1,11 +1,3 @@
-<script setup lang="ts">
-import { isPlaceholder, profile } from '~/data/profile'
-
-const mailto = isPlaceholder(profile.email) ? profile.email : `mailto:${profile.email}`
-
-
-</script>
-
 <template>
   <header class="grid-page items-start gap-y-4 pb-10 pt-5 text-meta sm:pt-7 lg:pb-14">
     <a
@@ -26,9 +18,6 @@ const mailto = isPlaceholder(profile.email) ? profile.email : `mailto:${profile.
     <div
       class="col-span-2 flex flex-col items-end gap-1 text-right sm:col-span-2 sm:col-start-7 lg:col-span-3 lg:col-start-10"
     >
-      <AppLink :href="mailto" class="hidden font-medium transition-colors hover:text-signal lg:inline-flex">
-        <template v-if="!isPlaceholder(profile.email)">{{ profile.email }}</template>
-      </AppLink>
       <ThemeToggle />
     </div>
   </header>
