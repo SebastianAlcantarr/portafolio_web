@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { profile } from '~/data/profile'
 
 // Barra flotante de vidrio líquido. Aparece cuando el encabezado original ya salió de la pantalla
 // y marca en rojo la sección en la que estás.
@@ -53,20 +52,13 @@ onBeforeUnmount(() => triggers.forEach((t) => t.kill()))
     <nav
       ref="bar"
       aria-label="Secciones (barra flotante)"
-      class="glass pointer-events-auto flex items-center gap-1 rounded-full p-1.5 text-meta font-medium"
+      class="glass pointer-events-auto flex items-center gap-1 rounded-xl p-1.5 text-meta font-medium"
     >
-      <a
-        href="#inicio"
-        class="hidden rounded-full px-4 py-2 font-display font-extrabold tracking-tight sm:block"
-      >
-        {{ profile.name }}
-      </a>
-      <span class="hidden h-5 w-px bg-current opacity-20 sm:block" aria-hidden="true" />
       <a
         v-for="link in links"
         :key="link.id"
         :href="`#${link.id}`"
-        class="relative rounded-full px-3 py-2 transition-colors duration-300 hover:text-signal sm:px-4"
+        class="relative  px-3 py-2 transition-colors duration-300 hover:text-signal sm:px-4"
         :class="active === link.id ? 'text-signal' : ''"
         :aria-current="active === link.id ? 'true' : undefined"
       >

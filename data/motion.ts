@@ -38,7 +38,25 @@ export const motion = {
     velocityBoost: 0.18,
   },
 
-  /** Vidrio líquido (barra flotante y fichas de proyecto). */
+  /** Etiquetas JSON ({ "seccion": … }) que se escriben letra por letra al aparecer. */
+  type: {
+    /** Segundos entre letra y letra. Más bajo = escribe más rápido. */
+    stagger: 0.018,
+  },
+
+  /** Botones magnéticos del hero: se acercan al cursor y regresan con rebote. */
+  magnetic: {
+    /** Cuánto siguen al cursor (0 = nada, 1 = lo alcanzan). */
+    strength: 0.35,
+  },
+
+  /** Barra de progreso de lectura arriba de la página. */
+  progress: {
+    /** Suavizado del avance, en segundos (0 = pegado al scroll). */
+    scrub: 0.3,
+  },
+
+  /** Vidrio líquido (barra flotante). */
   glass: {
     /** Fuerza de la refracción en el borde, en px. Solo en navegadores Chromium; los demás usan desenfoque. */
     refraction: 38,

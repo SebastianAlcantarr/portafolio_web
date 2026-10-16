@@ -3,11 +3,7 @@ import { isPlaceholder, profile } from '~/data/profile'
 
 const mailto = isPlaceholder(profile.email) ? profile.email : `mailto:${profile.email}`
 
-const links = [
-  { href: '#proyectos', label: 'Proyectos' },
-  { href: '#sobre-mi', label: 'Sobre mí' },
-  { href: '#contacto', label: 'Contacto' },
-]
+
 </script>
 
 <template>
@@ -16,7 +12,7 @@ const links = [
       href="#inicio"
       class="col-span-2 font-display text-base font-extrabold leading-tight tracking-tight sm:col-span-3"
     >
-      {{ profile.name }}
+      <NameTag />
     </a>
 
     <nav
@@ -24,14 +20,6 @@ const links = [
       class="order-last col-span-4 sm:order-none sm:col-span-3 sm:col-start-4 lg:col-span-3 lg:col-start-6"
     >
       <ul class="flex gap-5 sm:flex-col sm:gap-0.5">
-        <li v-for="link in links" :key="link.href">
-          <a
-            :href="link.href"
-            class="font-medium transition-colors duration-300 hover:text-signal"
-          >
-            {{ link.label }}
-          </a>
-        </li>
       </ul>
     </nav>
 

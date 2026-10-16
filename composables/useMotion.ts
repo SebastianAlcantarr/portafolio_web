@@ -1,6 +1,7 @@
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import type { Ref } from 'vue'
+import { motion } from '~/data/motion'
 
 /**
  * Corre animaciones de GSAP dentro de un componente y las limpia al desmontarlo.
@@ -39,6 +40,43 @@ export function revealChars(target: HTMLElement, opts: { start?: string; stagger
         scrollTrigger: { trigger: target, start: opts.start ?? 'top 85%', once: true },
       }),
   })
+}
+
+/**
+ * Texto que se "escribe" letra por letra, como en una terminal, al llegar a la pantalla.
+ * Respeta los <span> de colores de adentro (SplitText parte cada uno por separado).
+ */
+export function typeIn(target: HTMLElement) {
+  const split = SplitText.create(target, { type: 'chars' })
+  gsap.from(split.chars, {
+    autoAlpha: 0,
+    duration: 0.01,
+    ease: 'none',
+    stagger: motion.type.stagger,
+    scrollTrigger: { trigger: target, start: 'top 90%', once: true },
+  })
+  return split
+}
+
+/**
+ * Elemento magnético: se desplaza hacia el cursor mientras está encima y regresa con rebote elástico.
+ * Devuelve la función que quita los eventos (llámala en el cleanup de mm.add).
+ */
+export function magnetic(el: HTMLElement, strength = motion.magnetic.strength) {
+  const xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3.out' })
+  const yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3.out' })
+  const move = (e: PointerEvent) => {
+    const r = el.getBoundingClientRect()
+    xTo((e.clientX - (r.left + r.width / 2)) * strength)
+    yTo((e.clientY - (r.top + r.height / 2)) * strength)
+  }
+  const leave = () => gsap.to(el, { x: 0, y: 0, duration: 1, ease: 'elastic.out(1, 0.35)', overwrite: true })
+  el.addEventListener('pointermove', move)
+  el.addEventListener('pointerleave', leave)
+  return () => {
+    el.removeEventListener('pointermove', move)
+    el.removeEventListener('pointerleave', leave)
+  }
 }
 
 export const DESKTOP = '(min-width: 1024px)'

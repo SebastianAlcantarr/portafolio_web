@@ -5,7 +5,8 @@ import { profile } from '~/data/profile'
 import { projects } from '~/data/projects'
 
 // El proyecto de portada es el primero que tenga imagen.
-const cover = projects.find((p) => p.image)
+const cover = projects.find((p) => p.images?.length)
+const coverImage = cover?.images?.[0]
 const nameLines = profile.name.split(' ')
 
 const section = ref<HTMLElement | null>(null)
@@ -64,6 +65,12 @@ useMotion(section, (mm, el) => {
       .to(title.value, { y: () => -window.innerHeight * 0.18 }, 0)
   })
 
+  // Escritorio con mouse: los botones se acercan al cursor y regresan con rebote.
+  mm.add(`${DESKTOP} and (hover: hover) and (pointer: fine)`, () => {
+    const offs = Array.from(el.querySelectorAll<HTMLElement>('[data-magnetic]')).map((b) => magnetic(b))
+    return () => offs.forEach((off) => off())
+  })
+
   // Móvil: sin fijar; la captura se desplaza un poco más lento que la página.
   mm.add(MOBILE, () => {
     gsap.to(plate.querySelector('img'), {
@@ -87,7 +94,7 @@ useMotion(section, (mm, el) => {
       </p>
 
       <figure
-        v-if="cover?.image"
+        v-if="cover && coverImage"
         class="col-span-4 mt-10 flex flex-col-reverse gap-3 sm:col-span-8 lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:mt-0"
       >
         <a
@@ -97,8 +104,8 @@ useMotion(section, (mm, el) => {
           :aria-label="`Ver el proyecto ${cover.title}`"
         >
           <img
-            :src="cover.image.src"
-            :alt="cover.image.alt"
+            :src="coverImage.src"
+            :alt="coverImage.alt"
             width="1440"
             height="900"
             fetchpriority="high"
@@ -141,9 +148,11 @@ useMotion(section, (mm, el) => {
         class="enter-fade relative z-10 col-span-full mt-6 flex flex-col gap-6 lg:mt-8 lg:flex-row lg:items-end lg:justify-between"
         style="animation-delay: 0.5s"
       >
+        <p class="font-display text-lead font-bold tracking-tight">{{ profile.role }}</p>
 
         <div class="flex flex-col gap-3 sm:flex-row">
           <a
+            data-magnetic
             href="#proyectos"
             class="inline-flex items-center justify-between gap-6 bg-ink px-6 py-4 font-display text-lg font-bold text-paper transition-colors duration-300 hover:bg-signal sm:justify-start"
           >
@@ -151,6 +160,7 @@ useMotion(section, (mm, el) => {
             <ArrowIcon direction="down" />
           </a>
           <a
+            data-magnetic
             href="#contacto"
             class="inline-flex items-center justify-between gap-6 border-2 border-ink px-6 py-[0.875rem] font-display text-lg font-bold transition-colors duration-300 hover:border-signal hover:text-signal sm:justify-start"
           >

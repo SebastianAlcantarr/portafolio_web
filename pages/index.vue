@@ -21,5 +21,6 @@ useSeoMeta({
     </main>
     <!-- Al final a propósito: sus disparadores se crean después del hero fijado y miden bien. -->
     <GlassNav />
+    <ScrollProgress />
   </div>
 </template>

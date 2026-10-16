@@ -11,6 +11,18 @@ useMotion(section, (mm, el) => {
   const heading = el.querySelector<HTMLElement>('#sobre-mi-title')
   mm.add('all', () => {
     if (heading) revealChars(heading)
+
+    // El objeto { "stack": { … } } se arma en orden: se abre, entra cada tecnología y se cierra.
+    const open = el.querySelector('[data-stack-open]')
+    const items = el.querySelectorAll('[data-stack-item]')
+    const close = el.querySelector('[data-stack-close]')
+    if (open && close && items.length) {
+      gsap
+        .timeline({ scrollTrigger: { trigger: open, start: 'top 85%', once: true } })
+        .from(open, { autoAlpha: 0, x: -12, duration: 0.4, ease: 'power3.out' })
+        .from(items, { autoAlpha: 0, x: -24, duration: 0.6, ease: 'expo.out', stagger: 0.07 }, '-=0.1')
+        .from(close, { autoAlpha: 0, x: -12, duration: 0.4, ease: 'power3.out' }, '-=0.3')
+    }
     if (!about.value) return
     const target = about.value
     SplitText.create(target, {
@@ -37,6 +49,7 @@ useMotion(section, (mm, el) => {
     <div class="grid-page gap-y-10 lg:gap-y-16">
       <div class="col-span-full border-t border-ink pt-4 lg:pt-5" aria-hidden="true" />
 
+      <CodeLabel index="02" text="sobre-mi" class="col-span-full -mb-6 lg:-mb-12" />
       <h2 id="sobre-mi-title" class="col-span-full font-display text-section font-black lg:col-span-4">
         Sobre mí
       </h2>
@@ -55,9 +68,16 @@ useMotion(section, (mm, el) => {
 
           <div class="border-t border-rule pt-4">
             <h3 class="font-display text-lg font-bold">Stack</h3>
-            <ul class="mt-3 text-lead">
-              <li v-for="tech in profile.stack" :key="tech">{{ tech }}</li>
+            <p data-stack-open class="mt-3 font-mono text-meta tracking-normal text-muted" aria-hidden="true">
+              <span class="text-signal">{</span> "stack": <span class="text-signal">{</span>
+            </p>
+            <ul class="mt-1 pl-5 text-lead">
+              <li v-for="tech in profile.stack" :key="tech" data-stack-item class="flex items-center gap-2">
+                <TechIcon :name="tech" />
+                {{ tech }}
+              </li>
             </ul>
+            <p data-stack-close class="mt-1 font-mono text-meta tracking-normal text-signal" aria-hidden="true">} }</p>
           </div>
         </div>
       </div>
