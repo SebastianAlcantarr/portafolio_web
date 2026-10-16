@@ -41,7 +41,7 @@ const go = (to: number) => {
       <img
         v-for="(image, j) in images"
         :key="image.src"
-        :src="image.src"
+        :src="asset(image.src)"
         :alt="frame === j ? image.alt : ''"
         :aria-hidden="frame !== j"
         width="1440"

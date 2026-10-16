@@ -34,7 +34,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#FAFAF8', media: '(prefers-color-scheme: light)' },
         { name: 'theme-color', content: '#0C0C0B', media: '(prefers-color-scheme: dark)' },
       ],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: `${process.env.NUXT_APP_BASE_URL ?? '/'}favicon.svg` }],
     },
   },
 })

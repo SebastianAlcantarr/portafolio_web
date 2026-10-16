@@ -31,7 +31,7 @@ useMotion(section, (mm, el) => {
         Proyectos
       </h2>
       <p class="col-span-4 max-w-[34ch] text-muted sm:col-span-5 lg:col-span-3 lg:col-start-10">
-       Proyectos académicos y en producción en los que he participado
+       Proyectos académicos y en produccion  en los que he participado
       </p>
     </div>
 

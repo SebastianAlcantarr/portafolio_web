@@ -66,7 +66,7 @@ useMotion(section, (mm, el) => {
           :aria-label="`Ver el proyecto ${cover.title}`"
         >
           <img
-            :src="coverImage.src"
+            :src="asset(coverImage.src)"
             :alt="coverImage.alt"
             width="1440"
             height="900"
