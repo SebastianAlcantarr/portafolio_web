@@ -181,9 +181,6 @@ useMotion(row, (mm, el) => {
           </div>
           <p class="mt-2 flex justify-between gap-4 whitespace-nowrap font-display text-meta font-bold">
             <span class="text-muted">{{ project.kind ?? 'Proyecto' }}</span>
-            <span v-if="liveHref" class="inline-flex items-center gap-1 text-signal">
-              Ver sitio <ArrowIcon direction="up-right" />
-            </span>
           </p>
         </div>
       </div>
@@ -195,7 +192,7 @@ useMotion(row, (mm, el) => {
 
         <div v-if="project.live || project.repo" class="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-display text-base font-bold">
           <AppLink v-if="project.live" :href="project.live" external class="link-arrow">
-            Sitio <ArrowIcon direction="up-right" />
+            Ver sitio <ArrowIcon direction="up-right" />
           </AppLink>
           <AppLink v-if="project.repo" :href="project.repo" external class="link-arrow">
             GitHub <ArrowIcon direction="up-right" />
@@ -203,8 +200,16 @@ useMotion(row, (mm, el) => {
         </div>
       </div>
 
-      <!-- Móvil y tablet: las capturas van al final de la fila, plegadas. -->
-      <ProjectCarousel v-if="project.images?.length" :images="project.images" :title="project.title" />
+      <!-- Móvil y tablet: las capturas van al final de la fila, plegadas. Sin capturas, un marco con el título. -->
+      <ProjectCarousel v-if="images.length" :images="images" :title="project.title" />
+      <div
+        v-else
+        class="col-span-full flex aspect-[16/10] items-end bg-plate p-5 lg:hidden"
+        role="img"
+        :aria-label="`Captura de ${project.title} pendiente`"
+      >
+        <span class="font-display text-title font-black">{{ project.title }}</span>
+      </div>
     </div>
   </li>
 </template>

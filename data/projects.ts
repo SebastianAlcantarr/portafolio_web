@@ -2,12 +2,16 @@
 // - Lo que está entre [CORCHETES] es un placeholder: el sitio lo muestra marcado y sin enlace.
 // - Si un proyecto no tiene sitio en vivo o repositorio, borra ese campo y el enlace desaparece.
 // - Para agregar capturas, pon los archivos en /public/projects y llena `images` (la primera es la principal).
+//   Sin `images`, el proyecto muestra un marco con su título como vista previa.
+// - Cada proyecto: vista previa (images), descripción (summary), stack y un enlace (live y/o repo).
 
 export interface Project {
   slug: string
   title: string
   summary: string
   stack: string[]
+  /** Tipo de proyecto (p. ej. "Cliente", "Académico"); se muestra en la tarjeta flotante. Opcional. */
+  kind?: string
   /** Logro destacado, se muestra en el color de acento. */
   highlight?: string
   live?: string
