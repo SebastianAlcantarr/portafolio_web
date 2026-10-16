@@ -9,7 +9,7 @@
     --ink: 10 10 10; /* #0A0A0A */
     --muted: 82 82 77; /* #52524D */
     --rule: 214 214 207; /* #D6D6CF */
-    --signal: 40 215 215; /* #CE241C */
+    --signal: 11 122 122; /* #0B7A7A: turquesa oscurecido, 4.9:1 sobre --paper */
     --plate: 233 233 227; /* #E9E9E3 */
     color-scheme: light;
   }
@@ -19,7 +19,7 @@
     --ink: 242 241 236; /* #F2F1EC */
     --muted: 168 167 160; /* #A8A7A0 */
     --rule: 46 46 42; /* #2E2E2A */
-    --signal: 155 237 237; /* #FF5647 */
+    --signal: 155 237 237; /* #9BEDED */
     --plate: 28 28 26; /* #1C1C1A */
     color-scheme: dark;
   }

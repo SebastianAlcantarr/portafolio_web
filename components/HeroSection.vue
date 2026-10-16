@@ -39,7 +39,7 @@ useMotion(section, (mm, el) => {
     <div class="grid-page pb-20 lg:pb-16">
       <div class="enter-fade col-span-4 sm:col-span-6 lg:col-span-5">
         <p class="text-lead font-medium">
-          <span v-for="line in profile.headline" :key="line" class="block">{{ line }}</span>
+          <template v-for="line in profile.headline" :key="line"><span class="block">{{ line }}</span>{{ ' ' }}</template>
         </p>
 
         <!-- Enlaces clave, visibles sin hacer scroll. -->
@@ -104,7 +104,7 @@ useMotion(section, (mm, el) => {
         class="col-span-full mt-8 font-display text-poster font-black lg:mt-10"
       >
         <span v-for="(line, i) in nameLines" :key="i" class="block overflow-hidden pb-[0.04em]">
-          <span class="enter-line block" :style="{ animationDelay: `${0.25 + i * 0.1}s` }">{{ line }}</span>
+          <span class="enter-line block" :style="{ animationDelay: `${0.25 + i * 0.1}s` }">{{ line }}</span>{{ ' ' }}
         </span>
       </h1>
 

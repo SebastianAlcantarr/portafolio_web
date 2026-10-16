@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import { profile } from '~/data/profile'
 
+const title = `${profile.name} — Desarrollador web full-stack`
+const description = `Portafolio de ${profile.name}. ${profile.intro}`
+
 useSeoMeta({
-  title: `${profile.name} — Desarrollador web`,
-  description: profile.intro,
-  ogTitle: `${profile.name} — Desarrollador web`,
-  ogDescription: profile.intro,
+  title,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogType: 'website',
+  ogLocale: 'es_MX',
+  ogSiteName: profile.name,
+  twitterCard: 'summary',
+  twitterTitle: title,
+  twitterDescription: description,
 })
 </script>
 

@@ -59,7 +59,7 @@ export const projects: Project[] = [
     stack: ['Power BI , Python (Pandas,NumPY)'],
     live: 'https://oficialiamayor.sonora.gob.mx/dataton',
     images: [
-      { src: '/projects/dataton.jpg', alt:'foto amigos dataton' },
+      { src: '/projects/dataton.jpg', alt: 'Foto con amigos en la Datatón Sonora 2026' },
       { src: '/projects/dataton-1.webp', alt: 'Portada de la Dataton Sonora 2026 en la página de Oficialía Mayor' },
       { src: '/projects/dataton-ofm-2.webp', alt: 'Información del evento y fechas de la Dataton Sonora 2026' },
       { src: '/projects/dataton-ofm-3.webp', alt: 'Sección de la Dataton Sonora 2026 en la página de Oficialía Mayor' },

@@ -1,8 +1,8 @@
 // Datos personales. Todo lo que está entre [CORCHETES] es un placeholder por reemplazar.
 
 export const profile = {
-  name: 'Sebastián Alcantar Vicencio ',
-  role: 'Desarrollador web · Vue, Nuxt, FastAPI ',
+  name: 'Sebastián Alcantar Vicencio',
+  role: 'Desarrollador web · Vue, Nuxt, FastAPI',
   // Titular del hero: una línea por elemento (2 líneas en escritorio ≥1280 px; en pantallas angostas se parte).
   // Opciones consideradas:
   //  1. ["Construyo aplicaciones web full-stack con Vue/Nuxt, FastAPI y PostgreSQL", "y analizo datos con Power BI y pandas."]

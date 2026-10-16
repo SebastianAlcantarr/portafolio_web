@@ -7,14 +7,6 @@
       <NameTag />
     </a>
 
-    <nav
-      aria-label="Secciones"
-      class="order-last col-span-4 sm:order-none sm:col-span-3 sm:col-start-4 lg:col-span-3 lg:col-start-6"
-    >
-      <ul class="flex gap-5 sm:flex-col sm:gap-0.5">
-      </ul>
-    </nav>
-
     <div
       class="col-span-2 flex flex-col items-end gap-1 text-right sm:col-span-2 sm:col-start-7 lg:col-span-3 lg:col-start-10"
     >
