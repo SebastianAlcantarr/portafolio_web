@@ -19,7 +19,7 @@ useSeoMeta({
       <AboutSection />
       <ContactSection />
     </main>
-    <!-- Al final a propósito: sus disparadores se crean después del hero fijado y miden bien. -->
+    <!-- Al final a propósito: sus disparadores se crean después del resto de las secciones y miden bien. -->
     <GlassNav />
     <ScrollProgress />
   </div>

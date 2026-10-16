@@ -34,13 +34,9 @@ GSAP y sus plugins (incluido SplitText) son gratuitos desde la versión 3.13.
 - **Apagar:** `motion.scroll.enabled = false`. El sitio vuelve al scroll nativo.
 - Los enlaces `#seccion` también se desplazan con Lenis (`anchors: true`).
 
-### 2. Hero fijado: la portada crece al bajar (solo escritorio)
+### 2. Hero (sin fijar)
 - **Archivo:** `components/HeroSection.vue`.
-- **Cómo funciona:** cuando el hero llega al final de la pantalla, ScrollTrigger lo fija (`pin`). Mientras sigues bajando, la captura `[data-plate]` se mueve y escala hasta ocupar `growTo` del ancho, centrada en el espacio que queda encima de la fila del rol y los botones (`[data-hero-foot]`), que siguen visibles. La intro y el índice (`data-hero-fade`) se desvanecen y el nombre sube un poco, cruzando la captura en modo diferencia.
-- **En móvil:** no se fija; la captura solo se mueve más lento que la página (parallax).
-- **Perillas (`motion.hero`):** `pinLength` (cuánto scroll dura, en alturas de pantalla), `growTo` (hasta qué fracción del ancho crece; 1 = toda la pantalla).
-- **Apagar:** borra el bloque `mm.add(DESKTOP, ...)` de `HeroSection.vue`.
-- El `<section>` tiene `bg-paper` a propósito: al fijarlo, el nombre (que usa `mix-blend-difference`) necesita un fondo propio contra el cual invertirse. Sin él, en modo claro el nombre se vuelve blanco sobre blanco.
+- **Cómo funciona:** el hero ya no se fija ni hace crecer la portada: la expansión la hacía pasar por encima del nombre y quedar detrás de la barra flotante. La portada se queda en su columna, arriba del nombre. En móvil la imagen tiene un parallax suave dentro de su marco.
 
 ### 3. Cinta de stack que reacciona al scroll
 - **Archivo:** `components/VelocityMarquee.vue` (entre el hero y Proyectos en `pages/index.vue`).
@@ -65,7 +61,7 @@ GSAP y sus plugins (incluido SplitText) son gratuitos desde la versión 3.13.
 - Solo lo usa la barra flotante. Para ponérselo a otro elemento: clase `glass` y `useLiquidGlass(ref)` en el componente.
 
 ### 6. Barra flotante
-- **Archivo:** `components/GlassNav.vue` (al final de `pages/index.vue`, a propósito: así sus disparadores se crean después del hero fijado y miden bien).
+- **Archivo:** `components/GlassNav.vue` (al final de `pages/index.vue`, a propósito: así sus disparadores se crean después del resto de las secciones y miden bien).
 - **Cómo funciona:** aparece después de bajar el 35 % de la pantalla y marca en rojo la sección que cruza la mitad de la pantalla. Incluye el botón de tema.
 - **Apagar:** quita `<GlassNav />` de `pages/index.vue`.
 

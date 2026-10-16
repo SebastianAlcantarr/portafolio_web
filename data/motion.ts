@@ -12,14 +12,6 @@ export const motion = {
     wheelMultiplier: 1,
   },
 
-  /** Hero fijado: la captura de portada crece al bajar, con el nombre y el rol encima. */
-  hero: {
-    /** Cuánto scroll (en alturas de pantalla) dura la expansión. */
-    pinLength: 0.9,
-    /** Hasta qué fracción del ancho de la pantalla crece la captura (1 = toda la pantalla). */
-    growTo: 0.8,
-  },
-
   /** Tarjeta con la captura que sigue al cursor en la lista de proyectos (solo escritorio con mouse). */
   preview: {
     /** Retraso con el que sigue al cursor, en segundos. Más alto = más "flota". */

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import gsap from 'gsap'
-import { motion } from '~/data/motion'
 import { profile } from '~/data/profile'
 import { projects } from '~/data/projects'
 
@@ -10,60 +9,12 @@ const coverImage = cover?.images?.[0]
 const nameLines = profile.name.split(' ')
 
 const section = ref<HTMLElement | null>(null)
-const title = ref<HTMLElement | null>(null)
 
-// Escritorio: el hero se fija y la captura de portada crece y se centra,
-// mientras la intro y el índice se desvanecen; el nombre (en modo diferencia) y el rol quedan encima.
+// La portada vive en su columna, encima del nombre y sin solaparse con él ni con la barra flotante.
+// (Antes el hero se fijaba y la portada crecía hasta tapar el nombre y quedar detrás de la barra.)
 useMotion(section, (mm, el) => {
   const plate = el.querySelector<HTMLElement>('[data-plate]')
-  const fades = el.querySelectorAll<HTMLElement>('[data-hero-fade]')
-  const foot = el.querySelector<HTMLElement>('[data-hero-foot]')
-  const margin = 24
   if (!plate) return
-
-  mm.add(DESKTOP, () => {
-    // Geometría en coordenadas del documento, sin transformaciones (offsetTop/Left).
-    // Una vez fijado, GSAP envuelve la sección en un .pin-spacer: su posición es la que no se mueve.
-    const docTop = () => {
-      const host = el.parentElement?.classList.contains('pin-spacer') ? el.parentElement : el
-      return host.getBoundingClientRect().top + window.scrollY
-    }
-    const pinStart = () => Math.max(0, docTop() + el.offsetHeight - window.innerHeight)
-    const fit = () => {
-      const vw = document.documentElement.clientWidth
-      const vh = window.innerHeight
-      const w = plate.offsetWidth
-      const h = plate.offsetHeight
-      const sectionTopOnScreen = docTop() - pinStart()
-      // Espacio libre: de arriba de la pantalla hasta la fila del rol y los botones, que siguen visibles.
-      const footTop = foot ? sectionTopOnScreen + foot.offsetTop : vh
-      const room = footTop - 2 * margin
-      // Crece hasta `growTo` del ancho sin invadir esa fila, y queda centrada en el espacio libre.
-      const s = Math.min((vw * motion.hero.growTo) / w, room / h)
-      return {
-        s,
-        x: (vw - w * s) / 2 - plate.offsetLeft,
-        y: margin + (room - h * s) / 2 - sectionTopOnScreen - plate.offsetTop,
-      }
-    }
-
-    gsap
-      .timeline({
-        defaults: { ease: 'none' },
-        scrollTrigger: {
-          trigger: el,
-          start: pinStart,
-          end: () => `+=${window.innerHeight * motion.hero.pinLength}`,
-          pin: true,
-          scrub: 0.8,
-          invalidateOnRefresh: true,
-        },
-      })
-      .to(plate, { x: () => fit().x, y: () => fit().y, scale: () => fit().s, transformOrigin: '0 0' }, 0)
-      // fromTo y no to: si GSAP leyera el estado inicial durante la animación de entrada (CSS), lo guardaría invisible.
-      .fromTo(fades, { autoAlpha: 1, y: 0 }, { autoAlpha: 0, y: -48, duration: 0.35, immediateRender: false }, 0)
-      .to(title.value, { y: () => -window.innerHeight * 0.18 }, 0)
-  })
 
   // Escritorio con mouse: los botones se acercan al cursor y regresan con rebote.
   mm.add(`${DESKTOP} and (hover: hover) and (pointer: fine)`, () => {
@@ -71,7 +22,7 @@ useMotion(section, (mm, el) => {
     return () => offs.forEach((off) => off())
   })
 
-  // Móvil: sin fijar; la captura se desplaza un poco más lento que la página.
+  // Móvil: la captura se desplaza un poco más lento que la página.
   mm.add(MOBILE, () => {
     gsap.to(plate.querySelector('img'), {
       yPercent: 10,
@@ -83,11 +34,9 @@ useMotion(section, (mm, el) => {
 </script>
 
 <template>
-  <!-- bg-paper: al fijarse, GSAP aísla la sección; sin fondo propio el nombre (modo diferencia) no tendría contra qué invertirse. -->
   <section ref="section" aria-labelledby="hero-title" class="relative bg-paper">
     <div class="grid-page pb-20 lg:pb-16">
       <p
-        data-hero-fade
         class="enter-fade col-span-4 max-w-[24ch] text-lead font-medium sm:col-span-6 lg:col-span-5"
       >
         {{ profile.intro }}
@@ -100,7 +49,7 @@ useMotion(section, (mm, el) => {
         <a
           data-plate
           :href="`#proyecto-${cover.slug}`"
-          class="enter-plate group relative z-[5] block overflow-hidden bg-plate"
+          class="enter-plate group relative block overflow-hidden bg-plate"
           :aria-label="`Ver el proyecto ${cover.title}`"
         >
           <img
@@ -112,13 +61,12 @@ useMotion(section, (mm, el) => {
             class="aspect-[16/10] w-full object-cover object-top transition-transform duration-[1.4s] ease-out-expo group-hover:scale-[1.03] max-lg:motion-safe:transition-none"
           />
         </a>
-        <figcaption data-hero-fade class="flex flex-wrap justify-between gap-x-4 text-meta text-muted">
+        <figcaption class="flex flex-wrap justify-between gap-x-4 text-meta text-muted">
           <span>En portada: {{ cover.title }}</span>
         </figcaption>
       </figure>
 
       <nav
-        data-hero-fade
         aria-label="Proyectos"
         class="enter-fade col-span-4 mt-12 hidden self-start border-t border-rule pt-3 text-meta lg:col-span-4 lg:block"
         style="animation-delay: 0.35s"
@@ -135,8 +83,7 @@ useMotion(section, (mm, el) => {
 
       <h1
         id="hero-title"
-        ref="title"
-        class="relative z-10 col-span-full -mt-[0.38em] font-display text-poster font-black text-white mix-blend-difference lg:-mt-[0.5em]"
+        class="col-span-full mt-8 font-display text-poster font-black lg:mt-10"
       >
         <span v-for="(line, i) in nameLines" :key="i" class="block overflow-hidden pb-[0.04em]">
           <span class="enter-line block" :style="{ animationDelay: `${0.25 + i * 0.1}s` }">{{ line }}</span>
@@ -144,8 +91,7 @@ useMotion(section, (mm, el) => {
       </h1>
 
       <div
-        data-hero-foot
-        class="enter-fade relative z-10 col-span-full mt-6 flex flex-col gap-6 lg:mt-8 lg:flex-row lg:items-end lg:justify-between"
+        class="enter-fade col-span-full mt-6 flex flex-col gap-6 lg:mt-8 lg:flex-row lg:items-end lg:justify-between"
         style="animation-delay: 0.5s"
       >
         <p class="font-display text-lead font-bold tracking-tight">{{ profile.role }}</p>
