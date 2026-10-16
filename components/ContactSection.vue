@@ -34,9 +34,9 @@ const mailto = isPlaceholder(profile.email) ? profile.email : `mailto:${profile.
 const year = new Date().getFullYear()
 
 const networks = [
-  { label: 'GitHub', href: profile.github },
-  { label: 'LinkedIn', href: profile.linkedin },
-]
+  { label: 'GitHub', href: profile.github, icon: 'github' },
+  { label: 'LinkedIn', href: profile.linkedin, icon: 'linkedin' },
+] as const
 </script>
 
 <template>
@@ -57,6 +57,7 @@ const networks = [
           :href="mailto"
           class="inline-block max-w-full font-display text-[clamp(1.625rem,0.9rem+3.8vw,4.5rem)] font-black leading-none tracking-[-0.035em] underline decoration-2 underline-offset-[0.12em] [overflow-wrap:anywhere] hover:decoration-[0.08em]"
         >
+          <SocialIcon name="mail" class="mr-[0.25em] inline-block align-[-0.08em]" />
           <template v-if="!isPlaceholder(profile.email)">{{ profile.email }}</template>
           <template v-else>Correo</template>
         </AppLink>
@@ -69,7 +70,7 @@ const networks = [
             external
             class="flex items-center justify-between py-4 font-display text-title font-black transition-[padding] duration-500 ease-out-expo hover:pl-3"
           >
-            {{ network.label }}
+            <span class="inline-flex items-center gap-[0.4em]"><SocialIcon :name="network.icon" /> {{ network.label }}</span>
             <ArrowIcon direction="up-right" />
           </AppLink>
         </li>
@@ -79,7 +80,7 @@ const networks = [
         class="col-span-full mt-10 flex flex-col gap-3 border-t border-paper/25 pt-5 text-meta sm:flex-row sm:justify-between lg:mt-20"
       >
         <p>© {{ year }} {{ profile.name }}</p>
-        <p class="font-mono tracking-normal opacity-75"><span class="text-signal">{</span> "hecho_con": "Nuxt + Tailwind CSS" <span class="text-signal">}</span></p>
+        <p class="font-mono tracking-normal opacity-75"><span class="text-signal">{</span> Nuxt + Tailwind CSS <span class="text-signal">}</span></p>
         <a href="#inicio" class="inline-flex items-center gap-2 font-medium underline-offset-4 hover:underline">
           Volver arriba <ArrowIcon direction="up" />
         </a>

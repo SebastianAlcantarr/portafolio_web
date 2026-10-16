@@ -195,7 +195,7 @@ useMotion(row, (mm, el) => {
             Ver sitio <ArrowIcon direction="up-right" />
           </AppLink>
           <AppLink v-if="project.repo" :href="project.repo" external class="link-arrow">
-            GitHub <ArrowIcon direction="up-right" />
+            <SocialIcon name="github" /> GitHub <ArrowIcon direction="up-right" />
           </AppLink>
         </div>
       </div>

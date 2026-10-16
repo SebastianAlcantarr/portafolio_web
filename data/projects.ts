@@ -18,6 +18,7 @@ export interface Project {
   repo?: string
   /** Capturas del proyecto. La primera se muestra primero; el visitante puede cambiar entre ellas. */
   images?: ProjectImage[]
+  tiempo?:string
 }
 
 export interface ProjectImage {
@@ -50,6 +51,7 @@ export const projects: Project[] = [
         alt: 'Página de servicios de RayForce',
       },
     ],
+    tiempo:'Marzo 2026 - Junio 2026'
   },
   {
     slug: 'dataton-sonora-2026',
@@ -64,6 +66,33 @@ export const projects: Project[] = [
       { src: '/projects/dataton-ofm-2.webp', alt: 'Información del evento y fechas de la Dataton Sonora 2026' },
       { src: '/projects/dataton-ofm-3.webp', alt: 'Sección de la Dataton Sonora 2026 en la página de Oficialía Mayor' },
     ],
+    tiempo:'Abril 2026'
+  },
+  {
+    slug: 'DatData',
+    title: 'Creacion de Reportes y Analisis de Datos',
+    summary: 'Creacion de Reportes con PowerBI , preprocesamiento de Datos , y implementacion de metodologias para conectar PowerBI con LLMS ',
+    stack: ['PowerBI, Python , SQL, Pandas'],
+    live: 'https://ricardo050427.github.io/datdata/',
+    images: [
+      {
+        src: '/projects/datdata-1.webp',
+        alt: 'first_datdata',
+      },
+      {
+        src: '/projects/datdata-2.webp',
+        alt:'second_datdata'
+      },
+      {
+        src: '/projects/datdata-3.webp',
+        alt:'third_datdata'
+      },
+      {
+        src: '/projects/datdata-4.webp',
+        alt:'4_datadta'
+      }
+    ],
+    tiempo:'Mayo 2026 - Agosto 2026'
   },
   {
     slug: 'portal-de-derivadas',

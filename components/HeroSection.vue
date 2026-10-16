@@ -46,16 +46,11 @@ useMotion(section, (mm, el) => {
         <ul aria-label="Enlaces" class="mt-5 flex flex-wrap gap-x-5 gap-y-2 font-display text-base font-bold">
           <li>
             <AppLink :href="profile.github" external class="link-arrow">
-              GitHub <ArrowIcon direction="up-right" />
+              <SocialIcon name="github" /> GitHub <ArrowIcon direction="up-right" />
             </AppLink>
           </li>
           <li>
-            <a :href="profile.cv" download="CV-Sebastian-Alcantar.pdf" type="application/pdf" class="link-arrow">
-              Descargar CV <ArrowIcon direction="down" />
-            </a>
-          </li>
-          <li>
-            <AppLink :href="mailto" class="link-arrow [overflow-wrap:anywhere]">{{ profile.email }}</AppLink>
+            <AppLink :href="mailto" class="link-arrow [overflow-wrap:anywhere]"><SocialIcon name="mail" /> {{ profile.email }}</AppLink>
           </li>
         </ul>
       </div>
@@ -83,21 +78,6 @@ useMotion(section, (mm, el) => {
           <span>En portada: {{ cover.title }}</span>
         </figcaption>
       </figure>
-
-      <nav
-        aria-label="Proyectos"
-        class="enter-fade col-span-4 mt-12 hidden self-start border-t border-rule pt-3 text-meta lg:col-span-4 lg:block"
-        style="animation-delay: 0.35s"
-      >
-        <ul>
-          <li v-for="project in projects" :key="project.slug" class="flex justify-between gap-4 py-0.5">
-            <a :href="`#proyecto-${project.slug}`" class="font-medium transition-colors hover:text-signal">
-              {{ project.title }}
-            </a>
-            <span v-if="project.highlight" class="text-signal">{{ project.highlight }}</span>
-          </li>
-        </ul>
-      </nav>
 
       <h1
         id="hero-title"
