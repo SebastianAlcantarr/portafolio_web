@@ -16,17 +16,18 @@ export const profile = {
   github: 'https://github.com/SebastianAlcantarr',
   /** CV descargable: el archivo va en public/cv.pdf. */
   cv: '/cv.pdf',
-  linkedin: 'https://www.linkedin.com/messaging/thread/2-ZDc0MDdlODAtYWRkYy00YmM0LWIxMzItOGVkMTdmYTkzMTQwXzEwMA==/',
+  // TODO: reemplaza el placeholder por tu URL de perfil (https://www.linkedin.com/in/tu-usuario). Mientras tenga corchetes se muestra marcado y sin enlace.
+  linkedin: '[https://www.linkedin.com/in/TU-USUARIO]',
 
   about:
-    'Soy un estudiante de la Licenciatura en Ciencas de la Computacion en la Universidad de Sonora, me apasiona el desarollo web , la Ingenieria de Software ya la Ciencia de Datos   ',
+    'Soy estudiante de 7º semestre de Ciencias de la Computación en la UNISON y hago desarrollo full-stack freelance con Vue/Nuxt, FastAPI y PostgreSQL. Trabajo con análisis de datos en Power BI y pandas, e integro LLMs en reportes y productos web; en Datdata conecté Power BI con LLMs.',
 
   education: {
     degree: 'Licenciatura en Ciencias de la Computación 7mo Semestre',
     school: 'Universidad de Sonora (UNISON)',
   },
 
-  stack: ['Vue','Tailwind CSS', 'FastAPI', 'Power BI','Python','SQL'],
+  stack: ['Vue','Tailwind CSS', 'FastAPI', 'Power BI','Python','SQL', 'IA / LLMs'],
 }
 
 export const isPlaceholder = (value?: string) => !value || /^\[.*\]$/.test(value.trim())

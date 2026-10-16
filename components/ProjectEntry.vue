@@ -188,6 +188,7 @@ useMotion(row, (mm, el) => {
       <div class="col-span-4 flex flex-col gap-2 sm:col-span-6 lg:col-span-3 lg:col-start-10">
         <p v-if="project.highlight" class="font-display text-lg font-bold text-signal">{{ project.highlight }}</p>
         <p class="text-lead">{{ project.summary }}.</p>
+        <p v-if="project.problem" class="text-meta text-muted">{{ project.problem }}</p>
         <TechStack :stack="project.stack" :kind="project.kind" />
 
         <div v-if="project.live || project.repo" class="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-display text-base font-bold">

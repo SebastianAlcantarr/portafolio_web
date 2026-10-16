@@ -9,6 +9,8 @@ export interface Project {
   slug: string
   title: string
   summary: string
+  /** Línea corta "problema → solución" (máx. 2 líneas). */
+  problem?: string
   stack: string[]
   /** Tipo de proyecto (p. ej. "Cliente", "Académico"); se muestra en la tarjeta flotante. Opcional. */
   kind?: string
@@ -31,6 +33,7 @@ export const projects: Project[] = [
     slug: 'rayforce',
     title: 'RayForce',
     summary: 'E-commerce en línea headless para industria Ferretera',
+    problem: 'Una ferretería necesitaba vender en línea → e-commerce headless con pagos Stripe.',
     stack: ['Nuxt, FastAPI, TailwindCSS, TypeScript, SQL, Stripe'],
     live: 'https://rayforce.com.mx',
     images: [
@@ -57,9 +60,10 @@ export const projects: Project[] = [
     slug: 'dataton-sonora-2026',
     title: 'Datatón Sonora 2026',
     summary: 'Dashboard de Power BI sobre eficiencia del agua',
+    problem: 'Datos del agua dispersos y difíciles de leer → dashboard en Power BI con datos limpios en pandas.',
     highlight: '1er lugar',
-    stack: ['Power BI , Python (Pandas,NumPY)'],
-    live: 'https://oficialiamayor.sonora.gob.mx/dataton',
+    stack: ['Power BI, Python (Pandas, NumPy)'],
+    live: 'https://www.sonora.gob.mx/datos/equipo10dataton2',
     images: [
       { src: '/projects/dataton.jpg', alt: 'Foto con amigos en la Datatón Sonora 2026' },
       { src: '/projects/dataton-1.webp', alt: 'Portada de la Dataton Sonora 2026 en la página de Oficialía Mayor' },
@@ -70,9 +74,10 @@ export const projects: Project[] = [
   },
   {
     slug: 'DatData',
-    title: 'Creacion de Reportes y Analisis de Datos',
-    summary: 'Creacion de Reportes con PowerBI , preprocesamiento de Datos , y implementacion de metodologias para conectar PowerBI con LLMS ',
-    stack: ['PowerBI, Python , SQL, Pandas'],
+    title: 'Creación de Reportes y Análisis de Datos',
+    summary: 'Creación de reportes con Power BI, preprocesamiento de datos e implementación de metodologías para conectar Power BI con LLMs',
+    problem: 'Reportes que requerían interpretación manual → Power BI conectado a LLMs para explicarlos.',
+    stack: ['Power BI, Python, SQL, Pandas, IA / LLMs'],
     live: 'https://ricardo050427.github.io/datdata/',
     images: [
       {
@@ -97,7 +102,8 @@ export const projects: Project[] = [
   {
     slug: 'portal-de-derivadas',
     title: 'Portal de derivadas',
-    summary: 'Portal para la materia de Calculo I para la Universidad de Sonora',
+    summary: 'Portal para la materia de Cálculo I para la Universidad de Sonora',
+    problem: 'Estudiantes de Cálculo I sin un espacio interactivo de práctica → portal web con actividades, lecturas y foro.',
     stack: ['Vue', 'Tailwind CSS', 'FastAPI'],
     live: 'https://sebastianalcantarr.github.io/PROYECTO_INGENIERIA_SOFTWARE_II',
     images: [
@@ -110,7 +116,8 @@ export const projects: Project[] = [
   {
     slug: 'invitacion-de-boda',
     title: 'Invitación de boda',
-    summary: 'Invitación web con confirmación de asistencia , generacion de Invitacion en PDF por correo electronico y integracion con API de whatsapp',
+    summary: 'Invitación web con confirmación de asistencia, generación de invitación en PDF por correo electrónico e integración con la API de WhatsApp',
+    problem: 'Confirmar invitados a mano era lento → RSVP en línea con PDF por correo y aviso por WhatsApp.',
     stack: ['Nuxt 3 , Meta API , Resend '],
     live: 'https://bodagabrielyrenee.com',
     images: [
