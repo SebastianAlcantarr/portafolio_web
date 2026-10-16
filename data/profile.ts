@@ -16,8 +16,7 @@ export const profile = {
   github: 'https://github.com/SebastianAlcantarr',
   /** CV descargable: el archivo va en public/cv.pdf. */
   cv: '/cv.pdf',
-  // TODO: reemplaza el placeholder por tu URL de perfil (https://www.linkedin.com/in/tu-usuario). Mientras tenga corchetes se muestra marcado y sin enlace.
-  linkedin: '[https://www.linkedin.com/in/TU-USUARIO]',
+  linkedin: 'https://www.linkedin.com/in/sebastian-alcantar-vicencio-049787313',
 
   about:
     'Soy estudiante de 7º semestre de Ciencias de la Computación en la UNISON y hago desarrollo full-stack freelance con Vue/Nuxt, FastAPI y PostgreSQL. Trabajo con análisis de datos en Power BI y pandas, e integro LLMs en reportes y productos web; en Datdata conecté Power BI con LLMs.',
