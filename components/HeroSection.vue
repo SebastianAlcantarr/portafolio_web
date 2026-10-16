@@ -37,9 +37,9 @@ useMotion(section, (mm, el) => {
   <section ref="section" aria-labelledby="hero-title" class="relative bg-paper">
     <div class="grid-page pb-20 lg:pb-16">
       <p
-        class="enter-fade col-span-4 max-w-[24ch] text-lead font-medium sm:col-span-6 lg:col-span-5"
+        class="enter-fade col-span-4 text-lead font-medium sm:col-span-6 lg:col-span-5"
       >
-        {{ profile.intro }}
+        <span v-for="line in profile.headline" :key="line" class="block">{{ line }}</span>
       </p>
 
       <figure

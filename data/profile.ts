@@ -3,8 +3,14 @@
 export const profile = {
   name: 'Sebastián Alcantar Vicencio ',
   role: 'Desarrollador web · Vue, Nuxt, FastAPI ',
+  // Titular del hero: una línea por elemento (2 líneas en escritorio ≥1280 px; en pantallas angostas se parte).
+  // Opciones consideradas:
+  //  1. ["Construyo aplicaciones web full-stack con Vue/Nuxt, FastAPI y PostgreSQL", "y analizo datos con Power BI y pandas."]
+  //  2. ["Full-stack: Vue/Nuxt, FastAPI y PostgreSQL.", "Análisis de datos con Power BI y pandas."]  ← elegida: directa y cabe en 2 líneas
+  //  3. ["De la interfaz en Nuxt a la API en FastAPI y PostgreSQL;", "de los datos en pandas al dashboard en Power BI."]
+  headline: ['Full-stack: Vue/Nuxt, FastAPI y PostgreSQL.', 'Análisis de datos con Power BI y pandas.'],
   intro:
-    'Interesado en la Ingenieria de Software y en la Ciencia de Datos.',
+    'Desarrollo web full-stack con Vue/Nuxt, FastAPI y PostgreSQL, y análisis de datos con Power BI y pandas.',
 
   email: 'sebastianalcantar323@gmail.com',
   github: 'https://github.com/SebastianAlcantarr',
